@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+
+    <!-- General description of web application -->
+
+    <display-name>bank-game</display-name>
+    <description>
+      This is version 2.0 of Bank Game to perform
+      a wild and wonderful task, based on servlets.
+      It was written by Kishore (kmetla@yahoo.com),
+      who should be contacted for more information.
+    </description>
+
+
+    <!-- Context initialization parameters that define shared
+         String constants used within the application, which
+         can be customized by the system administrator who is
+         installing the application.  The values actually
+         assigned to these parameters can be retrieved in a
+         servlet or JSP page by calling:
+
+             String value =
+               getServletContext().getInitParameter("name");
+
+         where "name" matches the <param-name> element of
+         one of these initialization parameters.
+
+         You can define any number of context initialization
+         parameters, including zero.
+    -->
+
+    <context-param>
+      <param-name>webmaster</param-name>
+      <param-value>kmetla@yahoo.com</param-value>
+      <description>
+        The EMAIL address of the administrator to whom questions
+        and comments about this application should be addressed.
+      </description>
+    </context-param>
+
+
+    <!-- Servlet definitions for the servlets that make up
+         the web application, including initialization
+         parameters.  With Tomcat, you can also send requests
+         to servlets not listed here with a request like this:
+
+           http://localhost:8080/{context-path}/servlet/{classname}
+
+         but this usage is not guaranteed to be portable.  It also
+         makes relative references to images and other resources
+         required by your servlet more complicated, so defining
+         all of your servlets (and defining a mapping to them with
+         a servlet-mapping element) is recommended.
+
+         Servlet initialization parameters can be retrieved in a
+         servlet or JSP page by calling:
+
+             String value =
+               getServletConfig().getInitParameter("name");
+
+         where "name" matches the <param-name> element of
+         one of these initialization parameters.
+
+         You can define any number of servlets, including zero.
+    -->
+
+    <!-- EXAMPLE
+    <servlet>
+      <servlet-name>controller</servlet-name>
+      <description>
+        This servlet plays the "controller" role in the MVC architecture
+        used in this application.  It is generally mapped to the ".do"
+        filename extension with a servlet-mapping element, and all form
+        submits in the app will be submitted to a request URI like
+        "saveCustomer.do", which will therefore be mapped to this servlet.
+
+        The initialization parameter namess for this servlet are the
+        "servlet path" that will be received by this servlet (after the
+        filename extension is removed).  The corresponding value is the
+        name of the action class that will be used to process this request.
+        Load this servlet at server startup time, by load-on-startup tag
+      </description>
+      <servlet-class>com.mycompany.mypackage.ControllerServlet</servlet-class>
+      <init-param>
+        <param-name>listOrders</param-name>
+        <param-value>com.mycompany.myactions.ListOrdersAction</param-value>
+      </init-param>
+      <init-param>
+        <param-name>saveCustomer</param-name>
+        <param-value>com.mycompany.myactions.SaveCustomerAction</param-value>
+      </init-param>
+
+      <load-on-startup>5</load-on-startup>
+    </servlet>
+
+    <servlet>
+      <servlet-name>graph</servlet-name>
+      <description>
+        This servlet produces GIF images that are dynamically generated
+        graphs, based on the input parameters included on the request.
+        It is generally mapped to a specific request URI like "/graph".
+      </description>
+    </servlet>
+    -->
+
+    <servlet>
+    	<servlet-name>start</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.Game</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>adminLogin</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.AdminLogin</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>administrator</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.Administrator</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>adminInput</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.AdminInput</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>adminExecute</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.AdminExecute</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>adminReport</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.AdminReport</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>adminDemoInput</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.AdminDemoInput</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>adminCalculation</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.admin.AdminCalculation</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>saveAndRestart</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.SaveAndRestart</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>getAdminValues</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.GetAdminValues</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>getPlyrUsernames</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.GetPlyrUsernames</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>setPlyrUsernames</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.SetPlyrUsernames</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>playerLogin</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.PlayerLogin</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>player</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.Player</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>instrctnsWithClcltr</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.InstrctnsWithClcltr</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>playerInputAndReport</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.PlayerInputAndReport</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>playerInput</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.PlayerInput</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>playerExecute</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.PlayerExecute</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>playerReport</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.PlayerReport</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>calculatorDisplay</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.CalculatorDisplay</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>calculatorResult</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.CalculatorResult</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>playerCalculation</servlet-name>
+        <description></description>
+        <servlet-class>com.mettlesolutions.bankgame.player.PlayerCalculation</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+      <servlet-name>start</servlet-name>
+      <url-pattern>/start</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>adminLogin</servlet-name>
+      <url-pattern>/adminLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>administrator</servlet-name>
+      <url-pattern>/administrator</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>adminInput</servlet-name>
+      <url-pattern>/adminInput</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>adminExecute</servlet-name>
+      <url-pattern>/adminExecute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>adminReport</servlet-name>
+      <url-pattern>/adminReport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>adminDemoInput</servlet-name>
+      <url-pattern>/adminDemoInput</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>adminCalculation</servlet-name>
+      <url-pattern>/adminCalculation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>saveAndRestart</servlet-name>
+      <url-pattern>/saveAndRestart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>getAdminValues</servlet-name>
+      <url-pattern>/getAdminValues</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>getPlyrUsernames</servlet-name>
+      <url-pattern>/getPlyrUsernames</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>setPlyrUsernames</servlet-name>
+      <url-pattern>/setPlyrUsernames</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>playerLogin</servlet-name>
+      <url-pattern>/playerLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>player</servlet-name>
+      <url-pattern>/player</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>instrctnsWithClcltr</servlet-name>
+      <url-pattern>/instrctnsWithClcltr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>playerInputAndReport</servlet-name>
+      <url-pattern>/playerInputAndReport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>playerInput</servlet-name>
+      <url-pattern>/playerInput</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>playerExecute</servlet-name>
+      <url-pattern>/playerExecute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>playerReport</servlet-name>
+      <url-pattern>/playerReport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>calculatorDisplay</servlet-name>
+      <url-pattern>/calculatorDisplay</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>calculatorResult</servlet-name>
+      <url-pattern>/calculatorResult</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>playerCalculation</servlet-name>
+      <url-pattern>/playerCalculation</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Define mappings that are used by the servlet container to
+         translate a particular request URI (context-relative) to a
+         particular servlet.  The examples below correspond to the
+         servlet descriptions above.  Thus, a request URI like:
+
+           http://localhost:8080/{contextpath}/graph
+
+         will be mapped to the "graph" servlet, while a request like:
+
+           http://localhost:8080/{contextpath}/saveCustomer.do
+
+         will be mapped to the "controller" servlet.
+
+         You may define any number of servlet mappings, including zero.
+         It is also legal to define more than one mapping for the same
+         servlet, if you wish to.
+    -->
+
+    <!-- EXAMPLES
+    <servlet-mapping>
+      <servlet-name>controller</servlet-name>
+      <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+      <servlet-name>graph</servlet-name>
+      <url-pattern>/graph</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Define the default session timeout for your application,
+         in minutes.  From a servlet or JSP page, you can modify
+         the timeout for a particular session dynamically by using
+         HttpSession.getMaxInactiveInterval(). -->
+
+    <session-config>
+      <session-timeout>-1</session-timeout>    <!-- infinite -->
+    </session-config>
+
+  <!-- ===================== Default MIME Type Mappings =================== -->
+  <!-- When serving static resources, Tomcat will automatically generate    -->
+  <!-- a "Content-Type" header based on the resource's filename extension,  -->
+  <!-- based on these mappings.  Additional mappings can be added here (to  -->
+  <!-- apply to all web applications), or in your own application's web.xml -->
+  <!-- deployment descriptor.                                               -->
+
+    <mime-mapping>
+        <extension>abs</extension>
+        <mime-type>audio/x-mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ai</extension>
+        <mime-type>application/postscript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>aif</extension>
+        <mime-type>audio/x-aiff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>aifc</extension>
+        <mime-type>audio/x-aiff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>aiff</extension>
+        <mime-type>audio/x-aiff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>aim</extension>
+        <mime-type>application/x-aim</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>art</extension>
+        <mime-type>image/x-jg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>asf</extension>
+        <mime-type>video/x-ms-asf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>asx</extension>
+        <mime-type>video/x-ms-asf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>au</extension>
+        <mime-type>audio/basic</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>avi</extension>
+        <mime-type>video/x-msvideo</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>avx</extension>
+        <mime-type>video/x-rad-screenplay</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>bcpio</extension>
+        <mime-type>application/x-bcpio</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>bin</extension>
+        <mime-type>application/octet-stream</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>bmp</extension>
+        <mime-type>image/bmp</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>body</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>cdf</extension>
+        <mime-type>application/x-cdf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>cer</extension>
+        <mime-type>application/x-x509-ca-cert</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>class</extension>
+        <mime-type>application/java</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>cpio</extension>
+        <mime-type>application/x-cpio</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>csh</extension>
+        <mime-type>application/x-csh</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/css</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>dib</extension>
+        <mime-type>image/bmp</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>doc</extension>
+        <mime-type>application/msword</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>dtd</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>dv</extension>
+        <mime-type>video/x-dv</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>dvi</extension>
+        <mime-type>application/x-dvi</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>eps</extension>
+        <mime-type>application/postscript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>etx</extension>
+        <mime-type>text/x-setext</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>exe</extension>
+        <mime-type>application/octet-stream</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>gif</extension>
+        <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>gtar</extension>
+        <mime-type>application/x-gtar</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>gz</extension>
+        <mime-type>application/x-gzip</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>hdf</extension>
+        <mime-type>application/x-hdf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>hqx</extension>
+        <mime-type>application/mac-binhex40</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>htc</extension>
+        <mime-type>text/x-component</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>htm</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>hqx</extension>
+        <mime-type>application/mac-binhex40</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ief</extension>
+        <mime-type>image/ief</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jad</extension>
+        <mime-type>text/vnd.sun.j2me.app-descriptor</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jar</extension>
+        <mime-type>application/java-archive</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>java</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jnlp</extension>
+        <mime-type>application/x-java-jnlp-file</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpe</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpeg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>js</extension>
+        <mime-type>text/javascript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jsf</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jspf</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>kar</extension>
+        <mime-type>audio/x-midi</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>latex</extension>
+        <mime-type>application/x-latex</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>m3u</extension>
+        <mime-type>audio/x-mpegurl</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mac</extension>
+        <mime-type>image/x-macpaint</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>man</extension>
+        <mime-type>application/x-troff-man</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>me</extension>
+        <mime-type>application/x-troff-me</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mid</extension>
+        <mime-type>audio/x-midi</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>midi</extension>
+        <mime-type>audio/x-midi</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mif</extension>
+        <mime-type>application/x-mif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mov</extension>
+        <mime-type>video/quicktime</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>movie</extension>
+        <mime-type>video/x-sgi-movie</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mp1</extension>
+        <mime-type>audio/x-mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mp2</extension>
+        <mime-type>audio/x-mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mp3</extension>
+        <mime-type>audio/x-mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mpa</extension>
+        <mime-type>audio/x-mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mpe</extension>
+        <mime-type>video/mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mpeg</extension>
+        <mime-type>video/mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mpega</extension>
+        <mime-type>audio/x-mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mpg</extension>
+        <mime-type>video/mpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>mpv2</extension>
+        <mime-type>video/mpeg2</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ms</extension>
+        <mime-type>application/x-wais-source</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>nc</extension>
+        <mime-type>application/x-netcdf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>oda</extension>
+        <mime-type>application/oda</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pbm</extension>
+        <mime-type>image/x-portable-bitmap</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pct</extension>
+        <mime-type>image/pict</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pdf</extension>
+        <mime-type>application/pdf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pgm</extension>
+        <mime-type>image/x-portable-graymap</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pic</extension>
+        <mime-type>image/pict</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pict</extension>
+        <mime-type>image/pict</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pls</extension>
+        <mime-type>audio/x-scpls</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pnm</extension>
+        <mime-type>image/x-portable-anymap</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pnt</extension>
+        <mime-type>image/x-macpaint</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ppm</extension>
+        <mime-type>image/x-portable-pixmap</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ps</extension>
+        <mime-type>application/postscript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>psd</extension>
+        <mime-type>image/x-photoshop</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>qt</extension>
+        <mime-type>video/quicktime</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>qti</extension>
+        <mime-type>image/x-quicktime</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>qtif</extension>
+        <mime-type>image/x-quicktime</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ras</extension>
+        <mime-type>image/x-cmu-raster</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>rgb</extension>
+        <mime-type>image/x-rgb</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>rm</extension>
+        <mime-type>application/vnd.rn-realmedia</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>roff</extension>
+        <mime-type>application/x-troff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>rtf</extension>
+        <mime-type>application/rtf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>rtx</extension>
+        <mime-type>text/richtext</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>sh</extension>
+        <mime-type>application/x-sh</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>shar</extension>
+        <mime-type>application/x-shar</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>smf</extension>
+        <mime-type>audio/x-midi</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>snd</extension>
+        <mime-type>audio/basic</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>src</extension>
+        <mime-type>application/x-wais-source</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>sv4cpio</extension>
+        <mime-type>application/x-sv4cpio</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>sv4crc</extension>
+        <mime-type>application/x-sv4crc</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>swf</extension>
+        <mime-type>application/x-shockwave-flash</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>t</extension>
+        <mime-type>application/x-troff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tar</extension>
+        <mime-type>application/x-tar</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tcl</extension>
+        <mime-type>application/x-tcl</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tex</extension>
+        <mime-type>application/x-tex</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>texi</extension>
+        <mime-type>application/x-texinfo</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>texinfo</extension>
+        <mime-type>application/x-texinfo</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tif</extension>
+        <mime-type>image/tiff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tiff</extension>
+        <mime-type>image/tiff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tr</extension>
+        <mime-type>application/x-troff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>tsv</extension>
+        <mime-type>text/tab-separated-values</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>txt</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ulw</extension>
+        <mime-type>audio/basic</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ustar</extension>
+        <mime-type>application/x-ustar</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xbm</extension>
+        <mime-type>image/x-xbitmap</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xml</extension>
+        <mime-type>text/xml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xpm</extension>
+        <mime-type>image/x-xpixmap</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xsl</extension>
+        <mime-type>text/xml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xwd</extension>
+        <mime-type>image/x-xwindowdump</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>wav</extension>
+        <mime-type>audio/x-wav</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <!-- Wireless Bitmap -->
+        <extension>wbmp</extension>
+        <mime-type>image/vnd.wap.wbmp</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <!-- WML Source -->
+        <extension>wml</extension>
+        <mime-type>text/vnd.wap.wml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <!-- Compiled WML -->
+        <extension>wmlc</extension>
+        <mime-type>application/vnd.wap.wmlc</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <!-- WML Script Source -->
+        <extension>wmls</extension>
+        <mime-type>text/vnd.wap.wmlscript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <!-- Compiled WML Script -->
+        <extension>wmlscriptc</extension>
+        <mime-type>application/vnd.wap.wmlscriptc</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>wrl</extension>
+        <mime-type>x-world/x-vrml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>Z</extension>
+        <mime-type>application/x-compress</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>z</extension>
+        <mime-type>application/x-compress</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>zip</extension>
+        <mime-type>application/zip</mime-type>
+    </mime-mapping>
+
+</web-app>
