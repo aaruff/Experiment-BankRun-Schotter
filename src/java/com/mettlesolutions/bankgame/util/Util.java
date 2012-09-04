@@ -9,8 +9,6 @@
 
 package com.mettlesolutions.bankgame.util;
 
-import javax.servlet.http.HttpServletRequest;
-
 public class Util
 {
   public static int getIntValueFromReq(String strParamValue, StringBuffer errMesgs)

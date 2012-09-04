@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.SortedMap;
 import java.util.Iterator;
-import javax.servlet.http.HttpServletRequest;
 
 public class HtmlBuffer
 {

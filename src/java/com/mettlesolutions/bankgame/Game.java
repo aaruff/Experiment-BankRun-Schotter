@@ -18,11 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
-import javax.servlet.SingleThreadModel;
 
 import com.mettlesolutions.bankgame.util.ServerProperties;
 
-public class Game extends HttpServlet implements SingleThreadModel
+public class Game extends HttpServlet
 {
     //public final String SERVER_DETAILS_FILE = getServletContext().getInitParameter("configLocation");
     public void doGet(HttpServletRequest req, HttpServletResponse res)

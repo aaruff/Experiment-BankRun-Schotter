@@ -12,24 +12,15 @@ package com.mettlesolutions.bankgame.player;
 import com.mettlesolutions.bankgame.util.Constants;
 import com.mettlesolutions.bankgame.DataHandler;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
-import javax.servlet.SingleThreadModel;
-
 
 /**
  * HttpSession created holding the following:
@@ -44,7 +35,8 @@ import javax.servlet.SingleThreadModel;
  *    ARG_USRNMS_CRNT_RND_VALUES - Hashmap
  */
 
-public class Player extends HttpServlet implements SingleThreadModel{
+public class Player extends HttpServlet {
+
     private Map<String, String> userNamePasswords = new HashMap<String, String>();
     
     public void doPost(HttpServletRequest req, HttpServletResponse res)	throws ServletException, IOException {
@@ -99,15 +91,23 @@ public class Player extends HttpServlet implements SingleThreadModel{
       }
     }
 
-    private boolean validPlayerLogin(String usrnm, String pswd) throws IOException {
-        // generate subject IDs
-        for(int i = 0; i < 24; ++i){
+    /**
+     * Validates subject login and password
+     * @param login
+     * @param password
+     * @return boolean true if valid, otherwise false is returned
+     * 
+     * @throws IOException 
+     */
+    private boolean validPlayerLogin(String login, String password) throws IOException 
+    {
+        for (int i = 0; i < 24; ++i) {
             userNamePasswords.put(Integer.toString(i), Integer.toString(i));
         }
         
         boolean validUsernamePassword  = false;
         for(Map.Entry<String, String> entry : userNamePasswords.entrySet()){
-            if(usrnm.equals(entry.getKey()) && pswd.equals(entry.getValue())){
+            if(login.equals(entry.getKey()) && password.equals(entry.getValue())){
                 validUsernamePassword = true;
             }
         }

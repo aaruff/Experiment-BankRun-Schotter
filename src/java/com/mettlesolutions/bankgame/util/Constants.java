@@ -12,7 +12,7 @@ package com.mettlesolutions.bankgame.util;
 
 public class Constants {
     //public final static String SERVER_DETAILS_FILE = "C:" + File.separator + "bank-game" + File.separator + "config" + File.separator + "ServerDetails.config";
-    public final static String SERVER_DETAILS_FILE = "/usr/lib/tomcat6/webapps/bank-game/config/ServerDetails.config";
+    public final static String SERVER_DETAILS_FILE = "/usr/local/Cellar/tomcat6/6.0.33/libexec/webapps/bank-game/config/ServerDetails.config";
 
     // bank-game is the mapping registered in web.xml
     public final static String SRVLT_PATH = ServerProperties.SERVER_ADDR + "bank-game/";

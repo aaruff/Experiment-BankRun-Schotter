@@ -25,16 +25,13 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServlet;
-import javax.servlet.SingleThreadModel;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 
 
-public class AdminExecute extends HttpServlet implements SingleThreadModel
+public class AdminExecute extends HttpServlet 
 {
   int _numOfPlayers;
   double _eachDeposit;

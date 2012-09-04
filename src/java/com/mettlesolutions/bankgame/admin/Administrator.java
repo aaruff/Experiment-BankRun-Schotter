@@ -23,11 +23,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
-import javax.servlet.SingleThreadModel;
 import javax.servlet.http.HttpSession;
 
-
-public class Administrator extends HttpServlet implements SingleThreadModel{
+public class Administrator extends HttpServlet
+{
 
     @Override
     public void doPost(HttpServletRequest servletResponse, HttpServletResponse servletRequest)	throws ServletException, IOException {

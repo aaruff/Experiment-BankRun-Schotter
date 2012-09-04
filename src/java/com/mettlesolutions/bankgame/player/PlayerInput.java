@@ -23,9 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
-import javax.servlet.SingleThreadModel;
 
-public class PlayerInput extends HttpServlet implements SingleThreadModel
+public class PlayerInput extends HttpServlet
 {
     HttpSession _httpSsn;
 

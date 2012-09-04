@@ -14,8 +14,6 @@ import com.mettlesolutions.bankgame.util.Util;
 import java.util.Vector;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Random;
-
 
 public class Calculation
 {

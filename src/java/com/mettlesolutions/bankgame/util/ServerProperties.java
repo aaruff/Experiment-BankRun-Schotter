@@ -7,7 +7,6 @@
 package com.mettlesolutions.bankgame.util;
 
 import com.mettlesolutions.bankgame.util.Constants;
-import com.mettlesolutions.bankgame.Game;
 
 import java.util.Properties;
 import java.io.File;
@@ -41,12 +40,12 @@ public class ServerProperties {
 //  public final static String SERVER_ADDR = "http://128.122.99.30:88/";
 //  public final static String DRIVE_USED = "D:" + File.separator;
 
-    public final static String SERVER_ADDR = "http://128.122.10.15:8080/";
+    public final static String SERVER_ADDR = "http://localhost:8080/";
     public final static String DRIVE_USED = "/"; 
     public final static String INSTRCTNS_SERVER_ADDR = SERVER_ADDR; 
-    public final static String CONFIG_LOCATION = "/var/lib/tomcat6/webapps/bank-game/config/";
-    public final static String REPORT_LOCATION = "/var/lib/tomcat6/webapps/bank-game/config/";
-    public final static String APP_HOME = "/usr/lib/tomcat6/webapps/bank-game/";
+    public final static String CONFIG_LOCATION = "/usr/local/Cellar/tomcat6/6.0.33/libexec/conf/";
+    public final static String REPORT_LOCATION = "/usr/local/Cellar/tomcat6/6.0.33/libexec/conf/";
+    public final static String APP_HOME = "/usr/local/Cellar/tomcat6/6.0.33/libexec/webapps/bank-game/";
 
     public static Properties loadProperties(){
         Properties properties = new Properties();
